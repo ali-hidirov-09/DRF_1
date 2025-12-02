@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
-from rest_framework import viewsets, permissions
-from .serializers import UserSerializer
+from .models import Book
+from rest_framework import viewsets
+from .serializers import UserSerializer, BookSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -10,3 +11,6 @@ class UserViewSet(viewsets.ModelViewSet):
 
     # permission_classes = [permissions.IsAuthenticated] # Faqat ro'yxatdan o'tganlargina ko'ra oladi
 
+class BookViewSet(viewsets.ModelViewSet):
+    queryset = Book.objects.all()
+    serializer_class = BookSerializer
